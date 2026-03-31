@@ -9,7 +9,24 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+
+    --color-brand-green: #22452E;
+    --color-brand-green-dark: #1a3422;
+    --color-brand-green-light: #2d5a3d;
+    --color-brand-gold-dark: #D1A93B;
+    --color-brand-gold-light: #FFF083;
+    --color-brand-parchment: #F9F6F0;
+    --color-brand-dark: #1A1A18;
+    --color-brand-muted: #5A5A4E;
+    --color-brand-border: rgba(34, 69, 46, 0.15);
+
+    --color-cat-rally: #556B2F;
+    --color-cat-concours: #D1A93B;
+    --color-cat-museum: #6B7280;
+    --color-cat-auction: #9B1C1C;
+    --color-cat-other: #5A5A4E;
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -37,13 +54,30 @@
 }
 
 @layer base {
-
     *,
     ::after,
     ::before,
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    .text-gold-gradient {
+        background: linear-gradient(135deg, #D1A93B 0%, #FFF083 60%, #D1A93B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .bg-gold-gradient {
+        background: linear-gradient(135deg, #D1A93B 0%, #FFF083 50%, #D1A93B 100%);
+    }
+
+    .gold-divider {
+        height: 2px;
+        background: linear-gradient(135deg, #D1A93B 0%, #FFF083 50%, #D1A93B 100%);
     }
 }
 
