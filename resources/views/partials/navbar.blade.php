@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-16">
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex items-center gap-2 shrink-0">
-                <span class="font-serif text-brand-gold-dark font-bold text-lg tracking-wide">OLDTIMER EVENTS</span>
+                <img src="{{ Vite::asset('resources/images/oldtimer-events-logo.webp') }}" alt="Oldtimer Events" class="h-14 w-auto">
             </a>
 
             {{-- Desktop Nav --}}
