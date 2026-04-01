@@ -75,7 +75,7 @@
                              x-transition
                              class="bg-white border border-brand-border rounded-[10px] overflow-hidden shadow-sm group hover:-translate-y-1 transition-transform">
                             <div class="h-44 overflow-hidden">
-                                <img src="{{ $museum->image }}" alt="{{ $museum->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="{{ $museum->image_url }}" alt="{{ $museum->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="p-5">
                                 <div class="flex items-center gap-1 mb-1">

@@ -14,7 +14,7 @@
 
     {{-- Photo --}}
     <div class="relative overflow-hidden h-48">
-        <img src="{{ $event->image }}" alt="{{ $event->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         {{-- Date badge --}}
         <div class="absolute bottom-2.5 left-2.5 bg-gold-gradient text-brand-dark font-bold text-xs tracking-wide rounded px-2.5 py-0.5">
             {{ $event->date_display }}

@@ -1,7 +1,7 @@
 <x-layouts.public :title="$event->title">
     {{-- Hero --}}
     <div class="relative h-80 md:h-96 overflow-hidden">
-        <img src="{{ $event->image }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
+        <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-brand-green/[0.65]"></div>
         <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
             <nav class="flex items-center gap-1 mb-3 text-white/[0.65] text-xs">
@@ -74,7 +74,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                     @foreach (\App\Models\Event::take(6)->get() as $e)
                         <div class="rounded-lg overflow-hidden" style="aspect-ratio: 4/3;">
-                            <img src="{{ $e->image }}" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform cursor-pointer">
+                            <img src="{{ $e->image_url }}" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform cursor-pointer">
                         </div>
                     @endforeach
                 </div>

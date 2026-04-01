@@ -91,7 +91,7 @@
                                 {{ $event->featured ? 'border-2 border-brand-gold-dark shadow-[0_4px_20px_rgba(209,169,59,0.12)]' : 'border border-brand-border shadow-sm' }}">
                                 {{-- Photo --}}
                                 <div class="relative sm:w-64 h-48 sm:h-auto shrink-0 overflow-hidden">
-                                    <img src="{{ $event->image }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
+                                    <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
                                     @if ($event->featured)
                                         <div class="absolute top-2 left-2 bg-gold-gradient text-brand-dark font-bold text-[0.65rem] tracking-widest rounded px-2 py-0.5 flex items-center gap-1">
                                             &#9733; FEATURED

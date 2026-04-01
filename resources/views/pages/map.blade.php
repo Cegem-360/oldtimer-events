@@ -54,7 +54,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($events->take(3) as $event)
                                 <a href="{{ route('events.show', $event->slug) }}" class="rounded-lg overflow-hidden block relative" style="aspect-ratio: 16/10;">
-                                    <img src="{{ $event->image }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
+                                    <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
                                     <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(34,69,46,0.85) 0%, transparent 60%);"></div>
                                     <div class="absolute bottom-2 left-2.5">
                                         <p class="text-brand-gold-dark font-bold text-[0.7rem] tracking-wide">{{ $event->date_display }}</p>

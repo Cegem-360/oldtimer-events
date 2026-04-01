@@ -1,7 +1,7 @@
 <x-layouts.public title="Home">
     {{-- HERO --}}
     <section class="relative min-h-[90vh] flex flex-col justify-center items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1771413655248-041a8e888289?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+        <img src="{{ Vite::asset('resources/images/coastal-classic.webp') }}"
              alt="Classic car" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-brand-green/[0.62]"></div>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gold-gradient"></div>

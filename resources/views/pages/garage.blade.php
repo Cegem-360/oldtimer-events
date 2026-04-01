@@ -52,7 +52,7 @@
                          x-transition
                          class="bg-brand-green-dark border border-brand-gold-dark/20 rounded-[10px] overflow-hidden group">
                         <div class="relative h-52 overflow-hidden">
-                            <img src="{{ $car->image }}" alt="{{ $car->make }}"
+                            <img src="{{ $car->image_url }}" alt="{{ $car->make }}"
                                  class="w-full h-full object-cover transition-all duration-400 grayscale-[85%] group-hover:grayscale-0 group-hover:scale-105">
                             <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,52,34,0.9) 0%, transparent 60%);"></div>
                             <div class="absolute top-2.5 left-2.5 bg-brand-gold-dark text-brand-dark font-bold text-[0.65rem] tracking-widest rounded px-2 py-0.5">

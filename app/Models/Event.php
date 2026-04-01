@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Helpers\ImageAsset;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
     protected $guarded = [];
+
+    protected $appends = ['image_url', 'category_color'];
 
     protected function casts(): array
     {
@@ -31,6 +34,11 @@ class Event extends Model
     public function scopeCountry($query, string $country)
     {
         return $query->where('country', $country);
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        return ImageAsset::url($this->image);
     }
 
     public function getCategoryColorAttribute(): string
