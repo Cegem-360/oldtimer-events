@@ -4,7 +4,7 @@
             {{-- Logo & Description --}}
             <div class="lg:col-span-2">
                 <div class="flex items-center gap-2 mb-3">
-                    <span class="font-serif text-xl tracking-wide text-gold-gradient font-bold">OLDTIMER EVENTS</span>
+                    <img src="{{ Vite::asset('resources/images/oldtimer-events-logo.webp') }}" alt="Oldtimer Events" class="h-14 w-auto">
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-sm">
                     Europe's premier directory for classic car & motorcycle events, rallies, concours, auctions, clubs and museums.
