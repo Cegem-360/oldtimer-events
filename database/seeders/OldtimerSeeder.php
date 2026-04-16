@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Banner;
 use App\Models\Event;
 use App\Models\GarageCar;
 use App\Models\Museum;
@@ -138,6 +139,17 @@ class OldtimerSeeder extends Seeder
             ['make' => 'Bentley 4½ Litre', 'year' => '1928', 'owner' => 'William Ashford', 'country' => 'United Kingdom', 'era' => 'Vintage', 'story' => "One of the famous Bentley Boys' racers, campaigned at Le Mans in 1929. A rolling piece of motorsport heritage.", 'image' => 'classic-auction.webp', 'created_at' => now(), 'updated_at' => now()],
             ['make' => 'Lancia Aurelia B20 GT', 'year' => '1952', 'owner' => 'Pierre Dubois', 'country' => 'France', 'era' => 'Post-War', 'story' => 'The car that defined the gran turismo genre. Entered in numerous Rallye Monte-Carlo Historic events by its current custodian.', 'image' => 'concours-elegance.webp', 'created_at' => now(), 'updated_at' => now()],
             ['make' => 'Porsche 356 Speedster', 'year' => '1957', 'owner' => 'Klaus Berger', 'country' => 'Germany', 'era' => 'Post-War', 'story' => 'California-spec Speedster that returned to Europe in 1998. Correct Irish Green over tan leather, original Porsche engine.', 'image' => 'coastal-classic.webp', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+
+        Banner::insert([
+            ['title' => 'Classic Rally Co.', 'image' => 'banner-1.webp', 'url' => '#', 'active' => true, 'sort_order' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Euro Auto Parts', 'image' => 'banner-2.webp', 'url' => '#', 'active' => true, 'sort_order' => 2, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Vintage Oil', 'image' => 'banner-3.webp', 'url' => '#', 'active' => true, 'sort_order' => 3, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Heritage Club', 'image' => 'banner-4.webp', 'url' => '#', 'active' => true, 'sort_order' => 4, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Continental Tyre', 'image' => 'banner-5.webp', 'url' => '#', 'active' => true, 'sort_order' => 5, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Museum Pass Europe', 'image' => 'banner-6.webp', 'url' => '#', 'active' => true, 'sort_order' => 6, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Grand Auction House', 'image' => 'banner-7.webp', 'url' => '#', 'active' => true, 'sort_order' => 7, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Classic Restoration', 'image' => 'banner-8.webp', 'url' => '#', 'active' => true, 'sort_order' => 8, 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

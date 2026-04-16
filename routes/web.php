@@ -11,6 +11,7 @@ Route::get('/map', [PageController::class, 'map'])->name('map');
 Route::get('/garage', [PageController::class, 'garage'])->name('garage');
 Route::get('/museums', [PageController::class, 'museums'])->name('museums');
 Route::get('/membership', [PageController::class, 'membership'])->name('membership');
+Route::get('/directory', [PageController::class, 'directory'])->name('directory');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin', [PageController::class, 'admin'])->name('admin');
 

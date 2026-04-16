@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Event;
 use App\Models\GarageCar;
 use App\Models\Museum;
@@ -11,8 +12,9 @@ class PageController extends Controller
     public function home()
     {
         $featuredEvents = Event::featured()->take(3)->get();
+        $banners = Banner::active()->orderBy('sort_order')->get();
 
-        return view('pages.home', compact('featuredEvents'));
+        return view('pages.home', compact('featuredEvents', 'banners'));
     }
 
     public function events()
@@ -81,6 +83,11 @@ class PageController extends Controller
     public function membership()
     {
         return view('pages.membership');
+    }
+
+    public function directory()
+    {
+        return view('pages.directory');
     }
 
     public function dashboard()

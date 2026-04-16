@@ -1,17 +1,17 @@
 <x-layouts.public title="Home">
     {{-- HERO --}}
-    <section class="relative min-h-[90vh] flex flex-col justify-center items-center overflow-hidden">
-        <img src="{{ Vite::asset('resources/images/coastal-classic.webp') }}"
-             alt="Classic car" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-brand-green/[0.62]"></div>
+    <section class="relative min-h-[60vh] flex flex-col justify-center items-center overflow-hidden">
+        <img src="{{ Vite::asset('resources/images/oldtimer-events-hero.webp') }}"
+             alt="Classic car" class="absolute inset-0 w-full h-full object-cover object-bottom">
+        <div class="absolute inset-0 bg-black/50"></div>
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-gold-gradient"></div>
 
         <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
             <h1 class="font-serif text-gold-gradient font-bold uppercase mb-4 leading-tight tracking-wide"
-                style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
-                DISCOVER.<br>EUROPE'S MOST ICONIC<br>CLASSIC CAR EVENTS
+                style="font-size: clamp(2rem, 5vw, 3.5rem);">
+                DISCOVER. EUROPE'S MOST ICONIC CLASSIC CAR EVENTS
             </h1>
-            <p class="text-white/[0.88] text-base tracking-[0.08em] mb-8">
+            <p class="text-white/88 text-base font-semibold tracking-[0.08em] mb-8">
                 RALLIES, CONCOURS, AUCTIONS &amp; MUSEUMS ACROSS THE CONTINENT
             </p>
 
@@ -23,7 +23,8 @@
                 </button>
             </form>
 
-            <div class="flex justify-center gap-2 mt-5" x-data="{ active: 0 }">
+            {{-- TODO: implement real slider --}}p
+            <div class="hidden! justify-center gap-2 mt-5" x-data="{ active: 0 }">
                 <template x-for="i in 4">
                     <button @click="active = i - 1"
                             class="h-2 rounded-full transition-all"
@@ -32,6 +33,49 @@
             </div>
         </div>
     </section>
+
+    {{-- HIRDETÉSEK CAROUSEL --}}
+    @if ($banners->isNotEmpty())
+        <section class="bg-brand-green py-6">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center justify-between mb-4 mx-12">
+                    <h2 class="font-serif text-gold-gradient font-bold text-xl tracking-wide">Partnereink & Hirdetők</h2>
+                    <a href="{{ route('directory') }}" class="text-brand-gold-dark text-sm font-medium hover:underline flex items-center gap-1">
+                        Összes hirdetés
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 relative"
+                 x-data="bannerCarousel({{ $banners->count() }})">
+                {{-- Arrows --}}
+                <button @click.prevent="prev()"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-brand-green-dark hover:bg-brand-gold-dark/20 text-brand-gold-dark rounded-full w-10 h-10 flex items-center justify-center transition-colors shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button @click.prevent="next()"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-brand-green-dark hover:bg-brand-gold-dark/20 text-brand-gold-dark rounded-full w-10 h-10 flex items-center justify-center transition-colors shadow-lg cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                {{-- Track --}}
+                <div class="overflow-hidden mx-12">
+                    <div x-ref="track" class="flex gap-4 transition-transform duration-500 ease-in-out"
+                         :style="'transform: translateX(-' + pos + 'px)'">
+                        @foreach ($banners as $banner)
+                            <a href="{{ route('directory') }}"
+                               class="shrink-0 w-[280px] sm:w-[320px] lg:w-[360px] block rounded-lg overflow-hidden border border-brand-gold-dark/20 hover:border-brand-gold-dark/60 transition-colors"
+                               title="{{ $banner->title }}">
+                                <img src="{{ $banner->image_url }}"
+                                     alt="{{ $banner->title }}"
+                                     class="w-full aspect-square object-cover">
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 
     {{-- FEATURED EVENTS --}}
     <section class="bg-brand-parchment py-16 px-4">
@@ -124,4 +168,34 @@
             </a>
         </div>
     </section>
+
+    <script>
+        function bannerCarousel(count) {
+            return {
+                pos: 0,
+                total: count,
+                step: 376,
+                maxPos: 0,
+                init() {
+                    this.step = window.innerWidth < 640 ? 296 : (window.innerWidth < 1024 ? 336 : 376);
+                    this.$nextTick(() => {
+                        this.maxPos = Math.max(0, this.$refs.track.scrollWidth - this.$refs.track.parentElement.offsetWidth);
+                    });
+                    setInterval(() => {
+                        if (this.pos >= this.maxPos) {
+                            this.pos = 0;
+                        } else {
+                            this.pos = Math.min(this.pos + this.step, this.maxPos);
+                        }
+                    }, 3000);
+                },
+                prev() {
+                    this.pos = Math.max(0, this.pos - this.step);
+                },
+                next() {
+                    this.pos = Math.min(this.maxPos, this.pos + this.step);
+                }
+            };
+        }
+    </script>
 </x-layouts.public>

@@ -14,6 +14,7 @@
                         ['route' => 'map', 'label' => 'Map'],
                         ['route' => 'museums', 'label' => 'Museums'],
                         ['route' => 'garage', 'label' => 'The Garage'],
+                        ['route' => 'directory', 'label' => 'Hirdetések'],
                         ['route' => 'membership', 'label' => 'Membership'],
                     ];
                 @endphp
