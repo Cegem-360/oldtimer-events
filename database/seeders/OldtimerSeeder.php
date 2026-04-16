@@ -142,14 +142,14 @@ class OldtimerSeeder extends Seeder
         ]);
 
         Banner::insert([
-            ['title' => 'Classic Rally Co.', 'image' => 'banner-1.webp', 'url' => '#', 'active' => true, 'sort_order' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Euro Auto Parts', 'image' => 'banner-2.webp', 'url' => '#', 'active' => true, 'sort_order' => 2, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Vintage Oil', 'image' => 'banner-3.webp', 'url' => '#', 'active' => true, 'sort_order' => 3, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Heritage Club', 'image' => 'banner-4.webp', 'url' => '#', 'active' => true, 'sort_order' => 4, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Continental Tyre', 'image' => 'banner-5.webp', 'url' => '#', 'active' => true, 'sort_order' => 5, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Museum Pass Europe', 'image' => 'banner-6.webp', 'url' => '#', 'active' => true, 'sort_order' => 6, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Grand Auction House', 'image' => 'banner-7.webp', 'url' => '#', 'active' => true, 'sort_order' => 7, 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Classic Restoration', 'image' => 'banner-8.webp', 'url' => '#', 'active' => true, 'sort_order' => 8, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Kővári Restaurátor Műhely', 'category' => 'Restaurátor', 'location' => 'Budapest, Magyarország', 'image' => 'banner-1.webp', 'url' => null, 'active' => true, 'sort_order' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Classic Parts Europe', 'category' => 'Alkatrészek', 'location' => 'Wien, Ausztria', 'image' => 'banner-2.webp', 'url' => null, 'active' => true, 'sort_order' => 2, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Heritage Motors Service', 'category' => 'Szerviz', 'location' => 'München, Németország', 'image' => 'banner-3.webp', 'url' => null, 'active' => true, 'sort_order' => 3, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Veteran Auto Kereskedés', 'category' => 'Kereskedelem', 'location' => 'Győr, Magyarország', 'image' => 'banner-4.webp', 'url' => null, 'active' => true, 'sort_order' => 4, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Balaton Classic Garage', 'category' => 'Restaurátor', 'location' => 'Balatonfüred, Magyarország', 'image' => 'banner-5.webp', 'url' => null, 'active' => true, 'sort_order' => 5, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'OldTimer Insure', 'category' => 'Biztosítás', 'location' => 'Zürich, Svájc', 'image' => 'banner-6.webp', 'url' => null, 'active' => true, 'sort_order' => 6, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Pannonia Autóalkatrész', 'category' => 'Alkatrészek', 'location' => 'Sopron, Magyarország', 'image' => 'banner-7.webp', 'url' => null, 'active' => true, 'sort_order' => 7, 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Grand Prix Restoration', 'category' => 'Restaurátor', 'location' => 'Modena, Olaszország', 'image' => 'banner-8.webp', 'url' => null, 'active' => true, 'sort_order' => 8, 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

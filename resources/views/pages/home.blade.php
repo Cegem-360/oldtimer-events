@@ -64,11 +64,18 @@
                          :style="'transform: translateX(-' + pos + 'px)'">
                         @foreach ($banners as $banner)
                             <a href="{{ route('directory') }}"
-                               class="shrink-0 w-[280px] sm:w-[320px] lg:w-[360px] block rounded-lg overflow-hidden border border-brand-gold-dark/20 hover:border-brand-gold-dark/60 transition-colors"
-                               title="{{ $banner->title }}">
-                                <img src="{{ $banner->image_url }}"
-                                     alt="{{ $banner->title }}"
-                                     class="w-full aspect-square object-cover">
+                               class="shrink-0 w-[280px] sm:w-[320px] lg:w-[360px] block rounded-lg overflow-hidden border border-brand-gold-dark/20 hover:border-brand-gold-dark/60 transition-colors bg-brand-green-dark">
+                                <div class="relative">
+                                    <img src="{{ $banner->image_url }}"
+                                         alt="{{ $banner->title }}"
+                                         class="w-full aspect-[16/10] object-cover opacity-60">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-brand-green-dark/90 to-transparent"></div>
+                                </div>
+                                <div class="p-4 -mt-10 relative">
+                                    <span class="inline-block bg-brand-gold-dark/20 text-brand-gold-dark text-[0.65rem] font-semibold tracking-wider rounded-full px-2.5 py-0.5 mb-2 uppercase">{{ $banner->category }}</span>
+                                    <h3 class="font-serif text-white font-bold text-lg leading-tight mb-1">{{ $banner->title }}</h3>
+                                    <p class="text-white/60 text-xs">{{ $banner->location }}</p>
+                                </div>
                             </a>
                         @endforeach
                     </div>
