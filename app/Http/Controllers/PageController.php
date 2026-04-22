@@ -13,8 +13,9 @@ class PageController extends Controller
     {
         $featuredEvents = Event::featured()->take(3)->get();
         $banners = Banner::active()->orderBy('sort_order')->get();
+        $mapEvents = Event::whereNotNull('lat')->whereNotNull('lng')->get();
 
-        return view('pages.home', compact('featuredEvents', 'banners'));
+        return view('pages.home', compact('featuredEvents', 'banners', 'mapEvents'));
     }
 
     public function events()

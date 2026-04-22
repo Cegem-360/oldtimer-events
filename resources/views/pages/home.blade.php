@@ -110,28 +110,20 @@
     <section class="bg-brand-green py-16 px-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-5" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='1'%3E%3Crect x='0' y='0' width='20' height='20'/%3E%3Crect x='20' y='20' width='20' height='20'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div>
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-10">
-                <div class="flex-1 text-center lg:text-left">
-                    <h2 class="font-serif text-gold-gradient font-bold text-4xl mb-3">EXPLORE THE MAP</h2>
-                    <div class="gold-divider w-16 mb-4 mx-auto lg:mx-0"></div>
-                    <p class="text-white/80 text-[0.95rem] leading-relaxed mb-6 max-w-md mx-auto lg:mx-0">
+            <div class="text-center lg:text-left mb-8">
+                <h2 class="font-serif text-gold-gradient font-bold text-4xl mb-3">EXPLORE THE MAP</h2>
+                <div class="gold-divider w-16 mb-4 mx-auto lg:mx-0"></div>
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <p class="text-white/80 text-[0.95rem] leading-relaxed max-w-xl mx-auto lg:mx-0">
                         Discover classic car events across Europe on our interactive map. Filter by type, country, and date to find your next adventure.
                     </p>
-                    <a href="{{ route('map') }}" class="inline-block bg-gold-gradient text-brand-dark font-bold text-sm tracking-widest rounded-md px-8 py-3 transition-opacity hover:opacity-90">
+                    <a href="{{ route('map') }}" class="inline-block bg-gold-gradient text-brand-dark font-bold text-sm tracking-widest rounded-md px-8 py-3 transition-opacity hover:opacity-90 shrink-0">
                         OPEN FULL MAP
                     </a>
                 </div>
-                <div class="flex-1 w-full max-w-lg">
-                    <div class="bg-brand-green-dark border border-brand-gold-dark/20 rounded-xl p-6 relative overflow-hidden" style="aspect-ratio: 16/10;">
-                        <div class="text-gray-400 text-xs tracking-widest mb-2">EUROPE</div>
-                        @foreach ([['top' => '20%', 'left' => '48%', 'label' => 'Spa Classic'], ['top' => '35%', 'left' => '38%', 'label' => 'Riviera GT'], ['top' => '45%', 'left' => '55%', 'label' => 'Alpine Concours'], ['top' => '25%', 'left' => '30%', 'label' => 'Highland Rally'], ['top' => '55%', 'left' => '60%', 'label' => 'Mille Miglia']] as $pin)
-                            <div class="absolute" style="top: {{ $pin['top'] }}; left: {{ $pin['left'] }};">
-                                <div class="w-4 h-4 bg-brand-gold-dark rounded-[50%_50%_50%_0] -rotate-45 shadow-[0_0_8px_rgba(209,169,59,0.5)]"></div>
-                                <div class="text-brand-gold-dark text-[0.65rem] font-semibold whitespace-nowrap mt-1.5 -translate-x-1/2">{{ $pin['label'] }}</div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+            </div>
+            <div class="w-full">
+                <div id="home-map" class="leaflet-brand-map rounded-xl overflow-hidden border border-brand-gold-dark/20" style="height: 500px;"></div>
             </div>
         </div>
     </section>
@@ -175,6 +167,47 @@
             </a>
         </div>
     </section>
+
+    {{-- Leaflet --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mapEl = document.getElementById('home-map');
+            if (!mapEl) return;
+
+            const map = L.map('home-map', { zoomControl: false, scrollWheelZoom: false }).setView([48, 10], 5);
+            map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+                maxZoom: 19,
+            }).addTo(map);
+
+            const goldIcon = L.divIcon({
+                html: '<div style="width:14px;height:14px;background:#D1A93B;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 0 6px rgba(209,169,59,0.7);"></div>',
+                iconSize: [14, 14],
+                iconAnchor: [7, 14],
+                popupAnchor: [0, -14],
+                className: '',
+            });
+
+            const events = @json($mapEvents);
+            events.forEach(function (e) {
+                if (e.lat && e.lng) {
+                    L.marker([e.lat, e.lng], { icon: goldIcon })
+                        .addTo(map)
+                        .bindPopup(`
+                            <div style="font-family:Montserrat,sans-serif;min-width:160px;">
+                                <p style="color:#D1A93B;font-weight:700;font-size:0.72rem;margin-bottom:2px;">${e.date_display}</p>
+                                <p style="font-weight:700;font-size:0.9rem;margin-bottom:4px;">${e.title}</p>
+                                <p style="color:#666;font-size:0.75rem;margin-bottom:6px;">${e.location}</p>
+                                <a href="/events/${e.slug}" style="color:#D1A93B;font-weight:600;font-size:0.75rem;">View Details &rarr;</a>
+                            </div>
+                        `);
+                }
+            });
+        });
+    </script>
 
     <script>
         function bannerCarousel(count) {

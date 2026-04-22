@@ -46,7 +46,7 @@
 
                 {{-- Map --}}
                 <div class="flex-1">
-                    <div id="leaflet-map" class="rounded-xl overflow-hidden border border-brand-gold-dark/15" style="height: 480px;"></div>
+                    <div id="leaflet-map" class="leaflet-brand-map rounded-xl overflow-hidden border border-brand-gold-dark/15" style="height: 480px;"></div>
 
                     {{-- Featured Events below map --}}
                     <div class="mt-8">
@@ -75,6 +75,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const map = L.map('leaflet-map').setView([48, 10], 4);
+            map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
                 maxZoom: 19,
